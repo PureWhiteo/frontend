@@ -64,7 +64,7 @@ var indexNav = [
 },
 ]
 
-var adminurl =  "http://localhost:8080/springboot1144o/admin/dist/index.html";
+var adminurl =  "http://localhost:8081/";
 
 var cartFlag = false
 

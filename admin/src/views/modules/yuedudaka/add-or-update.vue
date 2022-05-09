@@ -58,7 +58,14 @@
         </el-form-item>  
         <div v-else>
           <el-form-item v-if="ruleForm.luyin" label="录音" prop="luyin">
-            <el-button type="text" size="small" @click="download($base.url+ruleForm.luyin)">预览</el-button>
+            <audio
+              :style='{"width":"300px","height":"54px"}'
+              :src="$base.url + ruleForm.luyin"
+              controls="controls"
+            >
+              您的浏览器不支持音频播放
+            </audio>
+            <!-- <el-button type="text" size="small" @click="download($base.url+ruleForm.luyin)">预览</el-button> -->
           </el-form-item>
         </div>    
       </el-col>
