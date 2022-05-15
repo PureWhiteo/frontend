@@ -27,6 +27,7 @@ import * as validate from '@/utils/validate'
 Vue.prototype.$base = base
 Vue.prototype.$http = http
 Vue.prototype.$api = api
+Vue.prototype.$imgBase = 'http://110.42.186.88:8080/springboot1144o/'
 
 Vue.prototype.$echarts = echarts
 

@@ -207,16 +207,16 @@ export default {
         return;
       }
       const res = await this.$http({
-        method: "",
-        url: `yonghu/login`,
+        method: "get",
+        url: 'yonghu/login',
         data: this.form
       });
-      if (!res.data?.token) {
-        return this.$message.error(res.data?.msg || '登录失败！');
+      if (!res?.token) {
+        return this.$message.error(res?.msg || '登录失败！');
       }
       this.$message.success('登录成功')
       this.$router.replace({ path: '/home' });
-      localStorage.setItem('front-token', res.data.token);
+      localStorage.setItem('front-token', res.token);
     },
     register() {
       this.$router.push({ path: '/register' });

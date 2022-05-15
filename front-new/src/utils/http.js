@@ -22,11 +22,11 @@ http.interceptors.request.use(config => {
 })
 
 http.interceptors.response.use(response => {
-  if (response.data && response.data.code === 401) { // 401, token失效
+  if (response.data?.code === 401) { // 401, token失效
     localStorage.removeItem('front-token');
     router.push({ path: '/login' });
   }
-  return response
+  return response.data
 }, error => {
   return Promise.reject(error)
 })
