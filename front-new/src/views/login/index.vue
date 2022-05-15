@@ -216,7 +216,7 @@ export default {
       }
       this.$message.success('登录成功')
       this.$router.replace({ path: '/home' });
-      localStorage.setItem('front-token', res.token);
+      localStorage.setItem('front-token', res.data.token);
     },
     register() {
       this.$router.push({ path: '/register' });
