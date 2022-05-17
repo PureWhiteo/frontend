@@ -333,7 +333,7 @@
   }
 
   .book-items-box .book-item .fans i {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .book-items-box .book-item .auther {
@@ -345,7 +345,7 @@
   }
 
   .book-items-box .book-item .auther i {
-    font-size: 18px;
+    font-size: 16px;
     margin-right: 8px;
   }
 
@@ -406,12 +406,12 @@
 							name="zuozhe" id="zuozhe" placeholder="作者" autocomplete="off" class="layui-input">
 					</div>
 					<button
-						:style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"100px","fontSize":"13px","borderStyle":"solid","height":"40px"}'
+						:style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"88px","fontSize":"13px","borderStyle":"solid","height":"36px"}'
 						id="btn-search" type="button" class="layui-btn layui-btn-normal">
 						<i v-if="true" class="layui-icon layui-icon-search"></i>搜索
 					</button>
 					<button
-						:style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"100px","fontSize":"13px","borderStyle":"solid","height":"40px"}'
+						:style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"88px","fontSize":"13px","borderStyle":"solid","height":"36px"}'
 						v-if="isAuth('huibenyuedu','新增')" @click="jump('../huibenyuedu/add.html')" type="button"
 						class="layui-btn btn-theme">
 						<i v-if="true" class="layui-icon">&#xe654;</i>添加
@@ -439,10 +439,10 @@
 								<div class="title">{{ item.huibenmingcheng }}</div>
 								<div class="tag-info">
 									<div class="tag">{{ item.huibenleixing }}</div>
-									<div class="fans"><i class="el-icon-star-off"></i> 99</div>
+									<div class="fans"><i class="layui-icon layui-icon-rate-solid"></i> 99</div>
 								</div>
 								<div class="auther">
-									<i class="el-icon-picture-outline-round"></i> <span>{{ item.zuozhe }}</span>
+									<i class="layui-icon layui-icon-username"></i> <span>{{ item.zuozhe }}</span>
 								</div>
 							</div>
 						</div>
