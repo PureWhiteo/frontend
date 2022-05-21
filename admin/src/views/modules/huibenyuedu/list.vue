@@ -131,7 +131,14 @@
                    :header-align="contents.tableAlign"
                     label="绘本听读">
                     <template slot-scope="scope">
-                      <el-button type="text" size="small" @click="download($base.url+scope.row.huibentingdu)">预览</el-button>
+                      <audio
+                        :style='{"width":"300px","height":"54px"}'
+                        :src="$base.url+scope.row.huibentingdu"
+                        controls="controls"
+                      >
+                        您的浏览器不支持音频播放
+                      </audio>
+                      <!-- <el-button type="text" size="small" @click="download($base.url+scope.row.huibentingdu)">预览</el-button> -->
                     </template>
                   </el-table-column>
                 <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign" 
