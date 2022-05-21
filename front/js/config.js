@@ -46,7 +46,7 @@ var centerMenu = [
     url: '../storeup/list.html'
   },
   {
-    name: '阅读打卡',
+    name: '打卡记录',
     url: '../yuedudaka/list.html'
   }
 ]

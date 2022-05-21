@@ -279,7 +279,7 @@ width: 100%;
 	    <!-- 样式一 -->
 	    <div class="list" style="position: relative;">
         <div v-if="dataList && dataList.length" style="width: 100%;">
-          <div @click="jump('../yuedudaka/detail.html?id='+item.id)" v-for="(item,index) in dataList" :key="index" class="list-item" :class="5=='3'?'list-item3':5=='5'?'list-item5':''">
+          <div @click="jump('../yuedudaka/detail.html?id='+item.id)" class="list-item" :class="5=='3'?'list-item3':5=='5'?'list-item5':''">
             <!-- <div class="list-item-body animation-box" :style='{"padding":"10px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 10px 0","borderColor":"rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 1)","borderRadius":"0","borderWidth":"0","borderStyle":"solid"}'>
               <div class="info">
                 <div v-if="item.price" :style='{"padding":"5px 6px","margin":"0px 0 0 0","color":"rgba(153, 153, 153, 1)","borderRadius":"30px","textAlign":"center","width":"100%","fontSize":"16px"}' class="price"><span :style='{"fontSize":"12px"}'>￥</span>{{Number(item.price).toFixed(2)}}</div>
