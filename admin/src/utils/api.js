@@ -4,7 +4,7 @@ const api = {
     examrecordpage: 'examrecord/page',
     examrecordsave: 'examrecord/save',
     examrecorddelete: 'examrecord/delete',
-    // 试卷
+    // 小测验
     exampaperpage: 'exampaper/page',
     exampaperinfo: 'exampaper/info/',
     exampapersave: 'exampaper/save',

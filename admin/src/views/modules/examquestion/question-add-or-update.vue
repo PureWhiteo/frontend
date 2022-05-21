@@ -7,8 +7,8 @@
       :rules="rules"
       label-width="80px"
     >
-      <el-form-item label="试卷" prop="paperid">
-        <el-select @change="onPaperChange" v-model="ruleForm.paperid" placeholder="选择试卷">
+      <el-form-item label="小测验" prop="paperid">
+        <el-select @change="onPaperChange" v-model="ruleForm.paperid" placeholder="选择小测验">
           <el-option
             v-for="(item,index) in paperOptions"
             v-bind:key="index"
@@ -176,7 +176,7 @@ export default {
         code: [{ required: true, message: "请选择选项", trigger: "blur" }]
       },
       rules: {
-        paperid: [{ required: true, message: "请选择试卷", trigger: "blur" }],
+        paperid: [{ required: true, message: "请选择小测验", trigger: "blur" }],
         questionname: [
           { required: true, message: "试题内容不能为空", trigger: "blur" }
         ],

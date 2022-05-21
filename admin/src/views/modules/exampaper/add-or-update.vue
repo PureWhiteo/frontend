@@ -10,14 +10,14 @@
     >
       <el-row >
       <el-col :span="12">
-        <el-form-item class="input" v-if="type!='info'"  label="试卷名称" prop="name">
+        <el-form-item class="input" v-if="type!='info'"  label="小测验名称" prop="name">
           <el-input v-model="ruleForm.name" 
-              placeholder="试卷名称" clearable  :readonly="ro.name"></el-input>
+              placeholder="小测验名称" clearable  :readonly="ro.name"></el-input>
         </el-form-item>
         <div v-else>
-          <el-form-item class="input" label="试卷名称" prop="name">
+          <el-form-item class="input" label="小测验名称" prop="name">
               <el-input v-model="ruleForm.name" 
-                placeholder="试卷名称" readonly></el-input>
+                placeholder="小测验名称" readonly></el-input>
           </el-form-item>
         </div>
       </el-col>
@@ -34,8 +34,8 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <el-form-item class="select" v-if="type!='info'"  label="试卷状态" prop="status">
-          <el-select :disabled="ro.status" v-model="ruleForm.status" placeholder="请选择试卷状态">
+        <el-form-item class="select" v-if="type!='info'"  label="小测验状态" prop="status">
+          <el-select :disabled="ro.status" v-model="ruleForm.status" placeholder="请选择小测验状态">
             <el-option
                 v-for="(item,index) in statusOptions"
                 v-bind:key="index"
@@ -45,9 +45,9 @@
           </el-select>
         </el-form-item>
         <div v-else>
-          <el-form-item class="input" label="试卷状态" prop="status">
+          <el-form-item class="input" label="小测验状态" prop="status">
               <el-input v-model="ruleForm.status?'启用':'禁用'" 
-                placeholder="试卷状态" readonly></el-input>
+                placeholder="小测验状态" readonly></el-input>
           </el-form-item>
         </div>
       </el-col>
@@ -147,14 +147,14 @@ export default {
           statusOptions: [],
       rules: {
           name: [
-                { required: true, message: '试卷名称不能为空', trigger: 'blur' },
+                { required: true, message: '小测验名称不能为空', trigger: 'blur' },
           ],
           time: [
                 { required: true, message: '考试时长(分钟)不能为空', trigger: 'blur' },
                 { validator: validateIntNumber, trigger: 'blur' },
           ],
           status: [
-                { required: true, message: '试卷状态不能为空', trigger: 'blur' },
+                { required: true, message: '小测验状态不能为空', trigger: 'blur' },
                 { validator: validateIntNumber, trigger: 'blur' },
           ],
       }

@@ -41,10 +41,10 @@ const menu = {
                 "child": [{
                     "appFrontIcon": "cuIcon-copy",
                     "buttons": ["新增", "查看", "修改", "删除"],
-                    "menu": "试卷管理",
+                    "menu": "小测验管理",
                     "tableName": "exampaper"
                 }],
-                "menu": "试卷管理"
+                "menu": "小测验管理"
             }, {
                 "child": [{
                     "appFrontIcon": "cuIcon-skin",
@@ -82,7 +82,7 @@ const menu = {
                     // {
                     //     "appFrontIcon": "cuIcon-baby",
                     //     "buttons": ["新增", "查看", "修改", "删除"],
-                    //     "menu": "试卷列表",
+                    //     "menu": "小测验列表",
                     //     "tableName": "exampaperlist"
                     // }
                 ],

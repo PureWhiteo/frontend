@@ -3,8 +3,8 @@
     <!-- 列表页 -->
     <div v-if="!showFlag">
       <el-form :inline="true" :model="searchForm" class="form-content">
-        <el-form-item label="试卷">
-          <el-input v-model="searchForm.papername" placeholder="试卷名称" clearable></el-input>
+        <el-form-item label="小测验">
+          <el-input v-model="searchForm.papername" placeholder="小测验名称" clearable></el-input>
         </el-form-item>
         <el-form-item>
           <el-button round @click="search()">查询</el-button>
@@ -36,7 +36,7 @@
             header-align="center"
             align="center"
             sortable
-            label="试卷"
+            label="小测验"
           ></el-table-column>
           <el-table-column
             prop="myscore"
@@ -99,7 +99,7 @@ export default {
       //导出excel
         json_fields: {
         "姓名": "username",    //常规字段
-        "试卷名称": "papername",    //常规字段
+        "小测验名称": "papername",    //常规字段
         "总分": "myscore",    //常规字段
         },
         json_meta: [
@@ -192,7 +192,7 @@ export default {
       },
       {
         field: 'papername',
-        displayName: '试卷名称',
+        displayName: '小测验名称',
         columnSize: 1
       },
       {

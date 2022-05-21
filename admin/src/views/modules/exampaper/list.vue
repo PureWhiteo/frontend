@@ -4,10 +4,10 @@
     <div v-if="showFlag">
       <el-form :inline="true" :model="searchForm" class="form-content">
         <el-row  :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
-                <el-form-item :label="contents.inputTitle == 1 ? '试卷名称' : ''">
-                  <el-input v-if="contents.inputIcon == 1 && contents.inputIconPosition == 1" prefix-icon="el-icon-search" v-model="searchForm.name" placeholder="试卷名称" clearable></el-input>
-                  <el-input v-if="contents.inputIcon == 1 && contents.inputIconPosition == 2" suffix-icon="el-icon-search" v-model="searchForm.name" placeholder="试卷名称" clearable></el-input>
-                  <el-input v-if="contents.inputIcon == 0" v-model="searchForm.name" placeholder="试卷名称" clearable></el-input>
+                <el-form-item :label="contents.inputTitle == 1 ? '小测验名称' : ''">
+                  <el-input v-if="contents.inputIcon == 1 && contents.inputIconPosition == 1" prefix-icon="el-icon-search" v-model="searchForm.name" placeholder="小测验名称" clearable></el-input>
+                  <el-input v-if="contents.inputIcon == 1 && contents.inputIconPosition == 2" suffix-icon="el-icon-search" v-model="searchForm.name" placeholder="小测验名称" clearable></el-input>
+                  <el-input v-if="contents.inputIcon == 0" v-model="searchForm.name" placeholder="小测验名称" clearable></el-input>
                 </el-form-item>
           <el-form-item>
             <el-button v-if="contents.searchBtnIcon == 1 && contents.searchBtnIconPosition == 1" icon="el-icon-search" type="success" @click="search()">{{ contents.searchBtnFont == 1?'查询':'' }}</el-button>
@@ -82,7 +82,7 @@
                 <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign" 
                     prop="name"
                    :header-align="contents.tableAlign"
-		    label="试卷名称">
+		    label="小测验名称">
 		     <template slot-scope="scope">
                        {{scope.row.name}}
                      </template>
@@ -99,7 +99,7 @@
                     prop="status"
                    :header-align="contents.tableAlign"
                     :formatter="exampaperStatusFormatter"
-		    label="试卷状态">
+		    label="小测验状态">
                 </el-table-column>
             <el-table-column width="300" :align="contents.tableAlign" 
                :header-align="contents.tableAlign"

@@ -76,7 +76,7 @@ const routes = [{
       }
       ,{
 	path: '/exampaper',
-        name: '试卷管理',
+        name: '小测验管理',
         component: exampaper
       }
       ,{
@@ -96,7 +96,7 @@ const routes = [{
       }
       ,{
 	path: '/exampaperlist',
-        name: '试卷列表',
+        name: '小测验列表',
         component: exampaperlist
       }
       ,{

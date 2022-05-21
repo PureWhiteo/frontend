@@ -3,8 +3,8 @@
     <!-- 列表页 -->
     <div v-if="!showFlag">
       <el-form :inline="true" :model="searchForm" class="form-content">
-        <el-form-item label="试卷">
-          <el-input v-model="searchForm.papername" placeholder="试卷名称" clearable></el-input>
+        <el-form-item label="小测验">
+          <el-input v-model="searchForm.papername" placeholder="小测验名称" clearable></el-input>
         </el-form-item>
         <el-form-item label="试题">
           <el-input v-model="searchForm.questionname" placeholder="试题名称" clearable></el-input>
@@ -18,7 +18,7 @@
             @click="deleteHandler()"
             round
           >删除</el-button>
-          <download-excel v-if="isAuth('examquestion','导出')" class = "export-excel-wrapper" :data = "dataList" :fields = "json_fields" name = "试卷题目.xls">
+          <download-excel v-if="isAuth('examquestion','导出')" class = "export-excel-wrapper" :data = "dataList" :fields = "json_fields" name = "小测验题目.xls">
             <!-- 导出excel -->
             <el-button
                 type="primary"
@@ -47,7 +47,7 @@
             header-align="center"
             align="center"
             sortable
-            label="试卷名称"
+            label="小测验名称"
           ></el-table-column>
           <el-table-column
             width="300"
@@ -124,7 +124,7 @@ export default {
       showFlag: false,
       //导出excel
         json_fields: {
-        "试卷名称": "papername",    //常规字段
+        "小测验名称": "papername",    //常规字段
         "题目名称": "questionname",    //常规字段
         "题目类型": {
                         field: 'type',
@@ -293,7 +293,7 @@ export default {
         properties: [
       {
         field: 'papername',
-        displayName: '试卷名称',
+        displayName: '小测验名称',
         columnSize: 1
       },
       {
@@ -328,7 +328,7 @@ export default {
       },
         ],
         type: 'json',
-        header: '试卷题目',
+        header: '小测验题目',
         // 样式设置
         gridStyle: 'border: 2px solid #3971A5;',
         gridHeaderStyle: 'color: red;  border: 2px solid #3971A5;'
