@@ -129,7 +129,7 @@
                 </el-table-column>
                   <el-table-column :sortable="contents.tableSortable" :align="contents.tableAlign"  prop="huibentingdu"
                    :header-align="contents.tableAlign"
-                    label="绘本听读">
+                    label="绘本听读" width="333">
                     <template slot-scope="scope">
                       <audio
                         :style='{"width":"300px","height":"54px"}'
