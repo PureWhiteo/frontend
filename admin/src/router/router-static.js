@@ -76,7 +76,7 @@ const routes = [{
       }
       ,{
 	path: '/exampaper',
-        name: '单词填写管理',
+        name: '试卷管理',
         component: exampaper
       }
       ,{
@@ -96,7 +96,7 @@ const routes = [{
       }
       ,{
 	path: '/exampaperlist',
-        name: '单词填写列表',
+        name: '试卷列表',
         component: exampaperlist
       }
       ,{

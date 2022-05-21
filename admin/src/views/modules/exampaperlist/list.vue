@@ -3,8 +3,8 @@
     <!-- 列表页 -->
     <div v-if="!showFlag">
       <el-form :inline="true" :model="searchForm" class="form-content">
-        <el-form-item label="单词填写名称">
-          <el-input v-model="searchForm.name" placeholder="单词填写名称" clearable></el-input>
+        <el-form-item label="试卷名称">
+          <el-input v-model="searchForm.name" placeholder="试卷名称" clearable></el-input>
         </el-form-item>
         <el-form-item>
           <el-button round @click="search()">查询</el-button>
@@ -19,7 +19,7 @@
           style="width: 100%;"
         >
           <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
-          <el-table-column prop="name" header-align="center" align="center" sortable label="单词填写"></el-table-column>
+          <el-table-column prop="name" header-align="center" align="center" sortable label="试卷"></el-table-column>
           <el-table-column
             prop="time"
             header-align="center"
@@ -29,7 +29,7 @@
           >
             <template slot-scope="scope">{{scope.row.time}}</template>
           </el-table-column>
-          <!-- <el-table-column prop="status" header-align="center" align="center" sortable label="单词填写状态">
+          <!-- <el-table-column prop="status" header-align="center" align="center" sortable label="试卷状态">
             <template slot-scope="scope">
               <el-tag v-if="scope.row.status==1" type="info">启用</el-tag>
               <el-tag v-if="scope.row.status==0" type="warning">禁用</el-tag>

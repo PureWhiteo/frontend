@@ -3,8 +3,8 @@
     <!-- 列表页 -->
     <div v-if="!showFlag">
       <el-form :inline="true" :model="searchForm" class="form-content">
-        <el-form-item label="单词填写">
-          <el-input v-model="searchForm.papername" placeholder="单词填写名称" clearable></el-input>
+        <el-form-item label="试卷">
+          <el-input v-model="searchForm.papername" placeholder="试卷名称" clearable></el-input>
         </el-form-item>
         <el-form-item label="试题">
           <el-input v-model="searchForm.questionname" placeholder="试题名称" clearable></el-input>
@@ -47,7 +47,7 @@
             header-align="center"
             align="center"
             sortable
-            label="单词填写"
+            label="试卷名称"
           ></el-table-column>
           <el-table-column
             width="300"
@@ -65,6 +65,7 @@
               <el-tag v-if="scope.row.type==1" type="info">多选题</el-tag>
               <el-tag v-if="scope.row.type==2" type="success">判断题</el-tag>
               <el-tag v-if="scope.row.type==3" type="warning">填空题</el-tag>
+              <el-tag v-if="scope.row.type==4" type="danger">选图题</el-tag>
             </template>
           </el-table-column>
           <el-table-column
@@ -141,6 +142,9 @@ export default {
                               break
                             case 3:
                               str = '填空题'
+                              break
+                            case 4:
+                              str = '选图题'
                               break
                           }
                           return str
@@ -271,6 +275,8 @@ export default {
               typeName = '判断题'
           } else if(this.list[i].type==3) {
               typeName = '填空题'
+          } else if(this.list[i].type==4) {
+              typeName = '选图题'
           }
           data.push({
           papername: this.list[i].papername,

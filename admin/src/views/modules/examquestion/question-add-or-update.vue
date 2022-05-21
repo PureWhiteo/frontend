@@ -7,8 +7,8 @@
       :rules="rules"
       label-width="80px"
     >
-      <el-form-item label="选择单词填写" prop="paperid">
-        <el-select @change="onPaperChange" v-model="ruleForm.paperid" placeholder="选择单词填写">
+      <el-form-item label="试卷" prop="paperid">
+        <el-select @change="onPaperChange" v-model="ruleForm.paperid" placeholder="选择试卷">
           <el-option
             v-for="(item,index) in paperOptions"
             v-bind:key="index"
@@ -33,13 +33,28 @@
           <el-option label="多选题" value="1"></el-option>
           <el-option label="判断题" value="2"></el-option>
           <el-option label="填空题" value="3"></el-option>
+          <el-option label="选图题" value="4"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item v-if="ruleForm.type!=3&&ruleForm.type!=2" label="选项" prop="options">
-        <div class="options" v-for="(item,index) in options" v-bind:key="index">
-          {{item.text}}
-          <el-button size="mini" @click="deleteOptions(index)" type="warning" round>删除</el-button>
+        <div v-if="ruleForm.type==4" class="option-img-group">
+          <div class="option-img" v-for="(item,index) in options" v-bind:key="index">
+            <el-image
+              style="width: 100px; height: 100px"
+              :src="imgOptionImgUrl(item.text)"
+              :preview-src-list="[imgOptionImgUrl(item.text)]"
+              fit="fill"
+            />
+            <span class="img-text">{{imgOption(item.text)}}</span>
+            <el-button type="danger" icon="el-icon-delete" circle @click="deleteOptions(index)"></el-button>
+          </div>
         </div>
+        <template v-else>
+          <div class="options" v-for="(item,index) in options" v-bind:key="index">
+            {{item.text}}
+            <el-button size="mini" @click="deleteOptions(index)" type="warning" round>删除</el-button>
+          </div>
+        </template>
         <el-button size="small" @click="addOptionsDialog" type="primary" round>添加选项</el-button>
       </el-form-item>
       <el-form-item v-if="ruleForm.type==0 && options.length>0" label="答案" prop="answer">
@@ -75,6 +90,16 @@
       <el-form-item v-if="ruleForm.type==3" label="答案" prop="answer">
         <el-input v-model="ruleForm.answer" placeholder="答案" clearable></el-input>
       </el-form-item>
+      <el-form-item v-if="ruleForm.type==4 && options.length>0" label="答案" prop="answer">
+        <el-select v-model="ruleForm.answer">
+          <el-option
+            :label="item.text ? item.text.slice(0, 1) : item.text"
+            :value="item.code"
+            v-for="(item,index) in options"
+            v-bind:key="index"
+          ></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="分数" prop="score">
         <el-input-number v-model="ruleForm.score" :min="1" :max="100" label="分数"></el-input-number>
       </el-form-item>
@@ -106,7 +131,18 @@
             <el-option label="D" value="D"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="内容" prop="text">
+        <el-form-item v-if="ruleForm.type==4" class="upload" label="图片" prop="text">
+          <file-upload
+            v-if="addOptionsDialogVisiable"
+            tip="点击选择上传图片选项"
+            action="file/upload"
+            :limit="1"
+            :multiple="false"
+            :fileUrls="addOptionsDialogImgs"
+            @change="changeAnswerImg"
+          ></file-upload>
+        </el-form-item>
+        <el-form-item v-else label="内容" prop="text">
           <el-input type="textarea" min="1" v-model="dialogForm.text" placeholder="内容" clearable></el-input>
         </el-form-item>
       </el-form>
@@ -132,6 +168,7 @@ export default {
       ruleForm: {},
       options: [],
       addOptionsDialogVisiable: false,
+      addOptionsDialogImgs: '',
       dialogForm: {},
       paperOptions: [],
       dialogRules: {
@@ -139,7 +176,7 @@ export default {
         code: [{ required: true, message: "请选择选项", trigger: "blur" }]
       },
       rules: {
-        paperid: [{ required: true, message: "请选择单词填写", trigger: "blur" }],
+        paperid: [{ required: true, message: "请选择试卷", trigger: "blur" }],
         questionname: [
           { required: true, message: "试题内容不能为空", trigger: "blur" }
         ],
@@ -151,6 +188,14 @@ export default {
         score: [{ required: true, message: "分数不能为空", trigger: "blur" }]
       }
     };
+  },
+  computed: {
+    imgOption() {
+      return (text) => text.slice(0, 1);
+    },
+    imgOptionImgUrl() {
+      return (text) => text.slice(2);
+    }
   },
   props: ["parent"],
   methods: {
@@ -251,6 +296,7 @@ export default {
     },
     addOptionsDialog() {
       this.addOptionsDialogVisiable = !this.addOptionsDialogVisiable;
+      this.addOptionsDialogImgs = '';
     },
     addOptions() {
       this.$refs["dialogForm"].validate(valid => {
@@ -292,6 +338,9 @@ export default {
       } else {
         this.options = [];
       }
+    },
+    changeAnswerImg(fileUrls) {
+      this.dialogForm.text = fileUrls;
     }
   }
 };
@@ -308,5 +357,31 @@ export default {
 }
 .detail-form-content {
 	background-color: transparent;
+}
+
+.option-img-group {
+  display: flex;
+}
+
+.option-img {
+  width: 125px;
+  margin-right: 20px;
+  position: relative;
+
+  .img-text {
+    position: absolute;
+    right: 6px;
+    top: -9px;
+  }
+
+  .el-button {
+    position: absolute;
+    right: -2px;
+    top: 17px;
+    padding: 5px !important;
+    color: red;
+    background: transparent;
+    border: unset;
+  }
 }
 </style>

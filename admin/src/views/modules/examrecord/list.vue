@@ -3,8 +3,8 @@
     <!-- 列表页 -->
     <div v-if="!showFlag">
       <el-form :inline="true" :model="searchForm" class="form-content">
-        <el-form-item label="单词填写">
-          <el-input v-model="searchForm.papername" placeholder="单词填写名称" clearable></el-input>
+        <el-form-item label="试卷">
+          <el-input v-model="searchForm.papername" placeholder="试卷名称" clearable></el-input>
         </el-form-item>
         <el-form-item>
           <el-button round @click="search()">查询</el-button>
@@ -36,7 +36,7 @@
             header-align="center"
             align="center"
             sortable
-            label="单词填写"
+            label="试卷"
           ></el-table-column>
           <el-table-column
             prop="myscore"

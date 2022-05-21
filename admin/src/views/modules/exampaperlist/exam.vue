@@ -229,7 +229,7 @@ export default {
       }
       this.dataListLoading = false;
     });
-    // 获取单词填写
+    // 获取试卷
     this.$http({
       url: `${this.$api.exampaperinfo}${this.$route.params.id}`,
       method: "get"
