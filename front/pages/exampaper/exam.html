@@ -35,6 +35,28 @@
 			.detail-content .item-content {
 				padding: 20px;
 			}
+
+			.option-img-group {
+				display: flex;
+				margin-top: 20px;
+			}
+
+			.option-img {
+				width: 125px;
+				margin-right: 42px;
+				position: relative;
+			}
+
+			.option-img .img-text {
+				position: absolute;
+				right: -48px;
+				bottom: 3px;
+				z-index: 9;
+			}
+
+			.option-img .img-text .el-radio__label {
+				padding-left: 6px;
+			}
 		</style>
 	</head>
 	<body>
@@ -63,10 +85,32 @@
 						<span v-if="ruleForm.type==1">多选题</span>
 						<span v-if="ruleForm.type==2">判断题</span>
 						<span v-if="ruleForm.type==3">填空题</span>
+						<span v-if="ruleForm.type==4">选图题</span>
 						)
 						({{ruleForm.score}}分)：
 					</span>
 					<span class="content">{{ruleForm.questionname}}</span>
+				</div>
+				<div v-if="ruleForm.type==4&&!isSubmitFlag" class="item-content" style="border-top:1px solid #eeeeee">
+					<span class="label">选择答案：</span>
+					<span class="content">
+						<div class="option-img-group">
+							<div class="option-img" v-for="(item,index) in options" v-bind:key="index">
+								<el-radio
+									v-model="answer"
+									:label="item.code"
+									class="img-text"
+								>
+									{{item.text.slice(0, 1)}}
+								</el-radio>
+								<el-image
+									style="width: 100px; height: 100px"
+									:src="item.text.slice(2)"
+									fit="fill"
+								/>
+							</div>
+						</div>
+					</span>
 				</div>
 				<div v-if="(ruleForm.type==0||ruleForm.type==2)&&!isSubmitFlag" class="item-content" style="border-top:1px solid #eeeeee">
 					<span class="label">选择答案：</span>
