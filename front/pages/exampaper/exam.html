@@ -57,6 +57,14 @@
 			.option-img .img-text .el-radio__label {
 				padding-left: 6px;
 			}
+
+			.option-list {
+				margin-top: 20px;
+			}
+
+			.option-list .option-item {
+				margin-bottom: 8px;
+			}
 		</style>
 	</head>
 	<body>
@@ -115,9 +123,20 @@
 				<div v-if="(ruleForm.type==0||ruleForm.type==2)&&!isSubmitFlag" class="item-content" style="border-top:1px solid #eeeeee">
 					<span class="label">选择答案：</span>
 					<span class="content">
-						<el-select v-model="answer">
-							<el-option :label="item.text" :value="item.code" v-for="(item,index) in options" v-bind:key="index"></el-option>
-						</el-select>
+						<div class="option-list">
+							<div
+								v-for="(item,index) in options" v-bind:key="index"
+								class="option-item"
+							>
+								<el-radio
+									v-model="answer"
+									:label="item.code"
+									class="img-text"
+								>
+									{{item.text.slice(2)}}
+								</el-radio>
+							</div>
+						</div>
 					</span>
 				</div>
 				<div v-if="ruleForm.type==3&&!isSubmitFlag" class="item-content" style="border-top:1px solid #eeeeee">
@@ -129,7 +148,20 @@
 				<div v-if="ruleForm.type==1&&!isSubmitFlag" class="item-content" style="border-top:1px solid #eeeeee">
 					<span class="label">选择答案：</span>
 					<span class="content">
-						<el-select v-model="answer" multiple>
+						<div class="option-list">
+							<div
+								v-for="(item,index) in options" v-bind:key="index"
+								class="option-item"
+							>
+								<el-checkbox-group v-model="answer" @change="changeMiuAnswerValue">
+									<el-checkbox
+										:label="item.code"
+										class="img-text"
+									>{{item.text.slice(2)}}</el-checkbox>
+								</el-checkbox-group>
+							</div>
+						</div>
+						<el-select v-show="false" v-model="answer" multiple>
 							<el-option :label="item.text" :value="item.code" v-for="(item,index) in options" v-bind:key="index"></el-option>
 						</el-select>
 					</span>
@@ -270,6 +302,9 @@
 
 				},
 				methods: {
+					changeMiuAnswerValue(value) {
+						console.log(value);
+					},
 					init() {
 						let _this = this;
 						let id = layui.http.getParam("id");

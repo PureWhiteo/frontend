@@ -81,15 +81,23 @@
         </div>
       </el-col>
       <el-col :span="24">  
-        <el-form-item class="upload" v-if="type!='info'&& !ro.huibentingdu" label="绘本听读" prop="huibentingdu">
+        <el-form-item class="upload upload-book-listen" v-if="type!='info'&& !ro.huibentingdu" label="绘本听读" prop="huibentingdu">
           <file-upload
-          tip="点击上传绘本听读"
-          action="file/upload"
-          :limit="1"
-          :multiple="true"
-          :fileUrls="ruleForm.huibentingdu?ruleForm.huibentingdu:''"
-          @change="huibentingduUploadChange"
-          ></file-upload>
+            tip="点击上传绘本听读"
+            action="file/upload"
+            :limit="1"
+            :multiple="true"
+            :fileUrls="ruleForm.huibentingdu?ruleForm.huibentingdu:''"
+            @change="huibentingduUploadChange"
+          />
+          <audio
+            v-if="ruleForm.huibentingdu"
+            :style='{"width":"300px","height":"54px"}'
+            :src="ruleForm.huibentingdu"
+            controls="controls"
+          >
+            您的浏览器不支持音频播放
+          </audio>
         </el-form-item>  
         <div v-else>
           <el-form-item v-if="ruleForm.huibentingdu" label="绘本听读" prop="huibentingdu">
@@ -713,13 +721,6 @@ var objcross = this.$storage.getObj('crossObj');
 };
 </script>
 <style lang="scss">
-.editor{
-  height: 500px;
-  
-  & /deep/ .ql-container {
-	  height: 310px;
-  }
-}
 .amap-wrapper {
   width: 100%;
   height: 500px;
@@ -736,5 +737,37 @@ var objcross = this.$storage.getObj('crossObj');
 }
 .btn .el-button {
   padding: 0;
+}
+
+.upload-book-listen {
+  .el-upload-list__item-preview {
+    display: none !important;
+  }
+  .el-upload-list {
+    .el-upload-list__item {
+      width: 322px !important;
+      height: 100px !important;
+    }
+    img {
+      display: none !important;
+    }
+  }
+  .el-upload {
+    width: 100px !important;
+    height: 100px !important;
+    > i {
+      line-height: 100px !important;
+    }
+  }
+
+  audio {
+    position: absolute;
+    left: 9px;
+    top: 25px;
+  }
+
+  &:hover audio {
+    display: none;
+  }
 }
 </style>

@@ -250,7 +250,7 @@ width: 100%;
 </style>
 <body>
   <div id="app">
-    <div class="banner">
+    <div v-show="false" class="banner">
       <div class="layui-carousel" id="test1" :style='{"boxShadow":"0 0 0px rgba(109, 74, 112, 1)","margin":"0 auto","borderColor":"rgba(0,0,0,.3)","borderRadius":"20px","borderWidth":"0","width":"75%","borderStyle":"solid"}'>
       		  <div carousel-item>
       			<div v-for="(item,index) in swiperList" :key="index">
@@ -264,29 +264,68 @@ width: 100%;
 	    <div class="title" :style='{"padding":"10px 0","boxShadow":"0px 0px 0px rgba(39,39,39,1)","margin":"10px 0 10px 0","borderColor":"rgba(255, 71, 217, 1)","borderRadius":"20px","borderWidth":"0 0 0px","borderStyle":"solid","justifyContent":"space-between","height":"54px"}'>
 	      <span :style='{"padding":"3px 18px  3px  13px ","boxShadow":"0 0 0px rgba(255,0,0,0)","color":"rgba(201, 165, 72, 1)","borderRadius":"0 18px 18px 0","borderWidth":"0","fontSize":"18px","borderStyle":"solid"}'>阅读打卡</span><span :style='{"padding":"0 10px","boxShadow":"0 0 0px rgba(255,0,0,0)","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"0","fontSize":"14px","borderStyle":"solid"}'>您现在的位置：阅读打卡</span>
 	    </div>
-		<form class="layui-form filter" :style='{"padding":"0 20px","boxShadow":"0 0 0px rgba(39, 39, 39, 1)","margin":"20px 0 10px 0","borderColor":"rgba(255, 71, 217, 1)","borderRadius":"54px","alignItems":"center","borderWidth":"0 0 0px","borderStyle":"solid","justifyContent":"flex-end","height":"80px"}'>
-			<div class="item-list">
-				<div class="lable" :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"transparent","color":"rgba(201, 165, 72, 1)","borderRadius":"0","textAlign":"right","borderWidth":"0","width":"auto","fontSize":"16px","borderStyle":"solid"}'>绘本名称</div>
-				<input type="text" :style='{"boxShadow":"0 0 0px rgba(255, 71, 217, 1)","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(51, 51, 51, 1)","borderRadius":"0","textAlign":"left","borderWidth":"1px","width":"140px","fontSize":"14px","borderStyle":"solid","height":"34px"}' name="huibenmingcheng" id="huibenmingcheng" placeholder="绘本名称" autocomplete="off" class="layui-input">
-			</div>
-			<button :style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"100px","fontSize":"13px","borderStyle":"solid","height":"40px"}' id="btn-search" type="button" class="layui-btn layui-btn-normal">
-			  <i v-if="true" class="layui-icon layui-icon-search"></i>搜索
-			</button>
-			<button :style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"100px","fontSize":"13px","borderStyle":"solid","height":"40px"}' v-if="isAuth('yuedudaka','新增')" @click="jump('../yuedudaka/add.html')" type="button" class="layui-btn btn-theme">
-			  <i v-if="true" class="layui-icon">&#xe654;</i>添加
-			</button>
-		</form>
+      <!-- <form class="layui-form filter" :style='{"padding":"0 20px","boxShadow":"0 0 0px rgba(39, 39, 39, 1)","margin":"20px 0 10px 0","borderColor":"rgba(255, 71, 217, 1)","borderRadius":"54px","alignItems":"center","borderWidth":"0 0 0px","borderStyle":"solid","justifyContent":"flex-end","height":"80px"}'>
+        <div class="item-list">
+          <div class="lable" :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"transparent","color":"rgba(201, 165, 72, 1)","borderRadius":"0","textAlign":"right","borderWidth":"0","width":"auto","fontSize":"16px","borderStyle":"solid"}'>绘本名称</div>
+          <input type="text" :style='{"boxShadow":"0 0 0px rgba(255, 71, 217, 1)","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(51, 51, 51, 1)","borderRadius":"0","textAlign":"left","borderWidth":"1px","width":"140px","fontSize":"14px","borderStyle":"solid","height":"34px"}' name="huibenmingcheng" id="huibenmingcheng" placeholder="绘本名称" autocomplete="off" class="layui-input">
+        </div>
+        <button :style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"100px","fontSize":"13px","borderStyle":"solid","height":"40px"}' id="btn-search" type="button" class="layui-btn layui-btn-normal">
+          <i v-if="true" class="layui-icon layui-icon-search"></i>搜索
+        </button>
+        <button :style='{"padding":"0 5px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 0 10px","borderColor":"rgba(201, 165, 72, 1)","backgroundColor":"rgba(255, 255, 255, 1)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"1px","width":"100px","fontSize":"13px","borderStyle":"solid","height":"40px"}' v-if="isAuth('yuedudaka','新增')" @click="jump('../yuedudaka/add.html')" type="button" class="layui-btn btn-theme">
+          <i v-if="true" class="layui-icon">&#xe654;</i>添加
+        </button>
+      </form> -->
 	    <!-- 样式一 -->
 	    <div class="list" style="position: relative;">
-	      <div @click="jump('../yuedudaka/detail.html?id='+item.id)" v-for="(item,index) in dataList" :key="index" class="list-item" :class="5=='3'?'list-item3':5=='5'?'list-item5':''">
-	        <div class="list-item-body animation-box" :style='{"padding":"10px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 10px 0","borderColor":"rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 1)","borderRadius":"0","borderWidth":"0","borderStyle":"solid"}'>
-				<div class="info">
-					<div v-if="item.price" :style='{"padding":"5px 6px","margin":"0px 0 0 0","color":"rgba(153, 153, 153, 1)","borderRadius":"30px","textAlign":"center","width":"100%","fontSize":"16px"}' class="price"><span :style='{"fontSize":"12px"}'>￥</span>{{Number(item.price).toFixed(2)}}</div>
-					<div v-if="item.vipprice&&item.vipprice>0" :style='{"padding":"5px 6px","margin":"0px 0 0 0","color":"rgba(153, 153, 153, 1)","borderRadius":"30px","textAlign":"center","width":"100%","fontSize":"16px"}' class="price"><span :style='{"fontSize":"12px"}'>￥</span>{{Number(item.vipprice).toFixed(2)}} <span :style='{"fontSize":"12px"}'>会员价</span></div>
-					<div v-if="item.jf" :style='{"padding":"5px 6px","margin":"0px 0 0 0","color":"rgba(153, 153, 153, 1)","borderRadius":"30px","textAlign":"center","width":"100%","fontSize":"16px"}' class="price"><span :style='{"fontSize":"12px"}'></span>{{Number(item.jf).toFixed(0)}}积分</div>
-				</div>
-	        </div>
-	      </div>
+        <div v-if="dataList && dataList.length" style="width: 100%;">
+          <div @click="jump('../yuedudaka/detail.html?id='+item.id)" v-for="(item,index) in dataList" :key="index" class="list-item" :class="5=='3'?'list-item3':5=='5'?'list-item5':''">
+            <!-- <div class="list-item-body animation-box" :style='{"padding":"10px","boxShadow":"0 0 0px #FF47D9","margin":"0 0 10px 0","borderColor":"rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 1)","borderRadius":"0","borderWidth":"0","borderStyle":"solid"}'>
+              <div class="info">
+                <div v-if="item.price" :style='{"padding":"5px 6px","margin":"0px 0 0 0","color":"rgba(153, 153, 153, 1)","borderRadius":"30px","textAlign":"center","width":"100%","fontSize":"16px"}' class="price"><span :style='{"fontSize":"12px"}'>￥</span>{{Number(item.price).toFixed(2)}}</div>
+                <div v-if="item.vipprice&&item.vipprice>0" :style='{"padding":"5px 6px","margin":"0px 0 0 0","color":"rgba(153, 153, 153, 1)","borderRadius":"30px","textAlign":"center","width":"100%","fontSize":"16px"}' class="price"><span :style='{"fontSize":"12px"}'>￥</span>{{Number(item.vipprice).toFixed(2)}} <span :style='{"fontSize":"12px"}'>会员价</span></div>
+                <div v-if="item.jf" :style='{"padding":"5px 6px","margin":"0px 0 0 0","color":"rgba(153, 153, 153, 1)","borderRadius":"30px","textAlign":"center","width":"100%","fontSize":"16px"}' class="price"><span :style='{"fontSize":"12px"}'></span>{{Number(item.jf).toFixed(0)}}积分</div>
+              </div>
+            </div> -->
+            <table class="layui-table" lay-skin="nob">
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>绘本名称</th>
+                  <th>绘本类型</th>
+                  <th>作者</th>
+                  <th>录音</th>
+                  <th>阅读时间</th>
+                  <!-- <th>操作</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item,index) in dataList" v-bind:key="index">
+                  <td>{{index + 1}}</td>
+                  <td>{{item.huibenmingcheng}}</td>
+                  <td>{{item.huibenleixing}}</td>
+                  <td>{{item.zuozhe}}</td>
+                  <td>
+                    <audio
+                      :style="{ width: '300px', height: '54px' }"
+                      :src="adminurl + item.luyin"
+                      controls="controls"
+                    >
+                      您的浏览器不支持音频播放
+                    </audio>
+                  </td>
+                  <td>{{item.yuedushijian}}</td>
+                  <!-- <td>
+                    <button @click="exam(item.id)" type="button" class="layui-btn layui-btn-radius btn-theme">
+                       查看
+                    </button>
+                  </td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <h1 v-else style="font-size: 21px;padding: 45px 0;"> 你还没有阅读打卡记录 ~ </h1>
 	    </div>
 		<div class="pager" id="pager" :style="{textAlign:2==1?'left':2==2?'center':'right'}"></div>
 	  </div>

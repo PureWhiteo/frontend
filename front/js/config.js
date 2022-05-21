@@ -28,22 +28,27 @@ var swiper = {
 /**
  * 个人中心菜单
  */
-var centerMenu = [{
-	name: '个人中心',
-	url: '../' + localStorage.getItem('userTable') + '/center.html'
-}, 
-{
-	name: '考试记录',
-	url: '../examrecord/list.html'
-}, 
-{
-	name: '错题本',
-	url: '../examrecord/wrong.html'
-},
-{
-        name: '我的收藏',
-        url: '../storeup/list.html'
-}
+var centerMenu = [
+  {
+    name: '个人信息',
+    url: '../' + localStorage.getItem('userTable') + '/center.html'
+  }, 
+  {
+    name: '考试记录',
+    url: '../examrecord/list.html'
+  }, 
+  {
+    name: '错题本',
+    url: '../examrecord/wrong.html'
+  },
+  {
+    name: '我的收藏',
+    url: '../storeup/list.html'
+  },
+  {
+    name: '阅读打卡',
+    url: '../yuedudaka/list.html'
+  }
 ]
 
 

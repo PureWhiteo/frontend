@@ -17,7 +17,7 @@
 
 		<div id="app">
 			<!-- 轮播图 -->
-			<div class="layui-carousel" id="swiper">
+			<div v-show="false" class="layui-carousel" id="swiper">
 				<div carousel-item id="swiper-item">
 					<div v-for="(item,index) in swiperList" v-bind:key="index">
 						<img class="swiper-item" :src="item.img">
