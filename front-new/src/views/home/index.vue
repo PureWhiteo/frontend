@@ -56,25 +56,25 @@ export default {
     this.getBookList()
   },
   methods: {
-    async getTypeList() {
-      const res = await this.$http({
-        method: 'get',
-        url: 'option/huibenleixing/huibenleixing'
-      });
-      if (res.data?.length) {
-        this.typeList = Array.from(res.data, t => {
-          const dic = {
-            '一年级': 'grade-1',
-            '二年级': 'grade-2',
-            '三年级': 'grade-3',
-            '四年级': 'grade-4',
-            '五年级': 'grade-5',
-            '六年级': 'grade-6',
-          };
-          return { label: t, value: dic[t] };
-        });
-      }
-    },
+    // async getTypeList() {
+    //   const res = await this.$http({
+    //     method: 'get',
+    //     url: 'option/huibenleixing/huibenleixing'
+    //   });
+    //   if (res.data?.length) {
+    //     this.typeList = Array.from(res.data, t => {
+    //       const dic = {
+    //         '一年级': 'grade-1',
+    //         '二年级': 'grade-2',
+    //         '三年级': 'grade-3',
+    //         '四年级': 'grade-4',
+    //         '五年级': 'grade-5',
+    //         '六年级': 'grade-6',
+    //       };
+    //       return { label: t, value: dic[t] };
+    //     });
+    //   }
+    // },
     async getBookList() {
       const res = await this.$http({
         method: 'get',

@@ -10,16 +10,7 @@ const menu = {
                     "tableName": "yonghu"
                 }],
                 "menu": "用户管理"
-            }, {
-                "child": [{
-                    "appFrontIcon": "cuIcon-discover",
-                    "buttons": ["新增", "查看", "修改", "删除"],
-                    "menu": "绘本类型",
-                    "menuJump": "列表",
-                    "tableName": "huibenleixing"
-                }],
-                "menu": "绘本类型管理"
-            }, {
+            },{
                 "child": [{
                     "appFrontIcon": "cuIcon-vip",
                     "buttons": ["新增", "查看", "修改", "删除", "查看评论"],

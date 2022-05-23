@@ -399,17 +399,6 @@ export default {
           this.$message.error(data.msg);
         }
       });
-            // this.$http({
-            //   url: `option/huibenleixing/huibenleixing`,
-            //   method: "get"
-            // }).then(({ data }) => {
-            //   if (data && data.code === 0) {
-            //     // this.huibenleixingOptions = data.data;
-            //   } else {
-            //     this.$message.error(data.msg);
-            //   }
-            // });
-         
     },
     // 多级联动参数
     info(id) {

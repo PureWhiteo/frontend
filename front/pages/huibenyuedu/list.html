@@ -467,8 +467,8 @@
 			el: '#app',
 			data: {
 				swiperList: [],
-				categoryList: [],
-				huibenleixingOptions: [],
+				categoryList: ["一年级","二年级","三年级","四年级","五年级","六年级"],
+				huibenleixingOptions: ["一年级","二年级","三年级","四年级","五年级","六年级"],
 				dataList: [],
 				baseurl: '',
 				swiperIndex: '-1'
@@ -541,26 +541,11 @@
 					// });
 				}
 			});
-			http.request(`option/huibenleixing/huibenleixing`, 'get', {}, (res) => {
-				vue.huibenleixingOptions = res.data
-			});
-
-
-			//类型查询
-			categoryList();
 			//类型搜索 
 			$(document).on("click", ".category-search", function (e) {
 				vue.swiperIndex = $(this).attr('index')
 				pageList(e.target.innerText);
 			});
-
-			function categoryList() {
-				// 获取列表数据
-				http.request('option/huibenleixing/huibenleixing', 'get', {}, function (res) {
-					vue.categoryList = res.data
-				})
-
-			}
 			var vCategory = '';
 
 			// 分页列表

@@ -20,7 +20,6 @@ import adminexam from '@/views/modules/exampaperlist/exam'
     import yonghu from '@/views/modules/yonghu/list'
     import yuedudaka from '@/views/modules/yuedudaka/list'
     import exampaperlist from '@/views/modules/exampaperlist/list'
-    import huibenleixing from '@/views/modules/huibenleixing/list'
     import discusshuibenyuedu from '@/views/modules/discusshuibenyuedu/list'
     import config from '@/views/modules/config/list'
     import examrecord from '@/views/modules/examrecord/list'
@@ -92,11 +91,6 @@ const routes = [{
 	path: '/exampaperlist',
         name: '小测验列表',
         component: exampaperlist
-      }
-      ,{
-	path: '/huibenleixing',
-        name: '绘本类型',
-        component: huibenleixing
       }
       ,{
 	path: '/discusshuibenyuedu',
