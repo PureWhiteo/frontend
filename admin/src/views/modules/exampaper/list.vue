@@ -90,7 +90,7 @@
                 <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign" 
                     prop="time"
                    :header-align="contents.tableAlign"
-		    label="考试时长(分钟)">
+		    label="小测验时长(分钟)">
 		     <template slot-scope="scope">
                        {{scope.row.time}}
                      </template>

@@ -106,7 +106,7 @@
 					<thead>
 						<tr>
 							<th>小测验名称</th>
-							<th>考试时长</th>
+							<th>小测验时长</th>
 							<th>创建时间</th>
 							<th>操作</th>
 						</tr>
@@ -118,7 +118,7 @@
 							<td>{{item.addtime}}</td>
 							<td>
 								<button @click="exam(item.id)" type="button" class="layui-btn layui-btn-radius btn-theme">
-									<i class="layui-icon">&#xe679;</i> 考试
+									<i class="layui-icon">&#xe679;</i> 小测验
 								</button>
 							</td>
 						</tr>
@@ -165,7 +165,7 @@
 					jump(url) {
 						jump(url)
 					},
-					// 进入考试
+					// 进入小测验
 					exam(id) {
 						let userid = localStorage.getItem("userid");
 						layui.http.request(`examrecord/deleteRecords?userid=${userid}&paperid=${id}`, 'post', {}, function(res) {

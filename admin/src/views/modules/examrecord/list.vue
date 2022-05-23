@@ -8,7 +8,7 @@
         </el-form-item>
         <el-form-item>
           <el-button round @click="search()">查询</el-button>
-          <download-excel v-if="isAuth('examrecord','导出')" class = "export-excel-wrapper" :data = "dataList" :fields = "json_fields" name = "考试记录.xls">
+          <download-excel v-if="isAuth('examrecord','导出')" class = "export-excel-wrapper" :data = "dataList" :fields = "json_fields" name = "小测验记录.xls">
                     <!-- 导出excel -->
                     <el-button
                         type="primary"
@@ -43,7 +43,7 @@
             header-align="center"
             align="center"
             sortable
-            label="考试得分"
+            label="小测验得分"
           >
             <template slot-scope="scope">
               <el-tag v-if="scope.row.myscore==0" type="info">{{scope.row.myscore}}</el-tag>
@@ -202,7 +202,7 @@ export default {
       },
         ],
         type: 'json',
-        header: '考试记录',
+        header: '小测验记录',
         // 样式设置
         gridStyle: 'border: 2px solid #3971A5;',
         gridHeaderStyle: 'color: red;  border: 2px solid #3971A5;'
