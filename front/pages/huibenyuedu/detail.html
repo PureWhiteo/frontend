@@ -149,12 +149,6 @@ color: rgba(201, 165, 72, 1) !important;
 							{{detail.zuozhe}}
 						</span>
 					</div>
-					<div :style='{"padding":"6px 20px","boxShadow":"0 0 0px rgba(2, 93, 172, 1)","margin":"14px 4px","borderColor":"rgba(255, 255, 255, 1)","backgroundColor":"rgba(255, 215, 212, 1)","borderRadius":"8px","borderWidth":"0 0 1px 0","borderStyle":"dashed"}' class="detail-item">
-						<span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"rgba(201, 165, 72, 1)","textAlign":"center"}'>级别：</span>
-						<span  style="word-break: break-all" :style='{"padding":"1px 15px","boxShadow":"0 0 0px #FF9012","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"rgba(39, 39, 39, 1)","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"22px","fontSize":"16px","borderStyle":"solid"}' class="desc">
-							{{detail.jibie}}
-						</span>
-					</div>
 
 					<div :style='{"padding":"6px 20px","boxShadow":"0 0 0px rgba(2, 93, 172, 1)","margin":"14px 4px","borderColor":"rgba(255, 255, 255, 1)","backgroundColor":"rgba(255, 215, 212, 1)","borderRadius":"8px","borderWidth":"0 0 1px 0","borderStyle":"dashed"}' class="detail-item">
 						<span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"rgba(201, 165, 72, 1)","textAlign":"center"}'>发布时间：</span>
@@ -247,14 +241,6 @@ color: rgba(201, 165, 72, 1) !important;
 								<div class="pager" id="pager"></div>
 							</div>
 						</div>
-						
-
-
-
-
-						
-						
-
 					</div>
 				</div>
 			</div>
@@ -286,8 +272,6 @@ color: rgba(201, 165, 72, 1) !important;
 				title: '',
 				// 倒计时
 				count: 0,
-				// 加入购物车数量
-				buynumber: 1,
 				// 当前详情页表
 				detailTable: 'huibenyuedu',
 				baseurl: '',
@@ -517,10 +501,6 @@ color: rgba(201, 165, 72, 1) !important;
 
 					jump(`../${acrossTable}/add.html?corss=true`);
 				},
-
-
-
-
 	    // 收藏商品
 				storeUp() {
 					layui.http.request('storeup/list', 'get', {
@@ -618,9 +598,6 @@ color: rgba(201, 165, 72, 1) !important;
 				// 	interval: swiper.interval,
 				// 	indicator: swiper.indicator
 				// });
-
-
-
 			});
 			if(localStorage.getItem('userid')){
 				http.request(`storeup/list`, 'get', {
