@@ -271,7 +271,7 @@ export default {
         huibenyiwen: '',
         fabushijian: '',
       },
-          huibenleixingOptions: [],
+          huibenleixingOptions: ["一年级","二年级","三年级","四年级","五年级","六年级"],
       rules: {
           huibenmingcheng: [
           ],
@@ -399,16 +399,16 @@ export default {
           this.$message.error(data.msg);
         }
       });
-            this.$http({
-              url: `option/huibenleixing/huibenleixing`,
-              method: "get"
-            }).then(({ data }) => {
-              if (data && data.code === 0) {
-                this.huibenleixingOptions = data.data;
-              } else {
-                this.$message.error(data.msg);
-              }
-            });
+            // this.$http({
+            //   url: `option/huibenleixing/huibenleixing`,
+            //   method: "get"
+            // }).then(({ data }) => {
+            //   if (data && data.code === 0) {
+            //     // this.huibenleixingOptions = data.data;
+            //   } else {
+            //     this.$message.error(data.msg);
+            //   }
+            // });
          
     },
     // 多级联动参数
@@ -433,31 +433,15 @@ export default {
     // 提交
     onSubmit() {
 
-
-
-
 	if(this.ruleForm.fengmian!=null) {
 		this.ruleForm.fengmian = this.ruleForm.fengmian.replace(new RegExp(this.$base.url,"g"),"");
 	}
 
 
 
-
-
-
-
-
 	if(this.ruleForm.huibentingdu!=null) {
 		this.ruleForm.huibentingdu = this.ruleForm.huibentingdu.replace(new RegExp(this.$base.url,"g"),"");
 	}
-
-
-
-
-
-
-
-
 
 
 
