@@ -8,7 +8,6 @@ import Home from '@/views/home'
 import Login from '@/views/login'
 import NotFound from '@/views/404'
 import UpdatePassword from '@/views/update-password'
-import pay from '@/views/pay'
 import register from '@/views/register'
 import center from '@/views/center'
 import adminexam from '@/views/modules/exampaperlist/exam'
@@ -21,7 +20,6 @@ import adminexam from '@/views/modules/exampaperlist/exam'
     import yonghu from '@/views/modules/yonghu/list'
     import yuedudaka from '@/views/modules/yuedudaka/list'
     import exampaperlist from '@/views/modules/exampaperlist/list'
-    import huibenleixing from '@/views/modules/huibenleixing/list'
     import discusshuibenyuedu from '@/views/modules/discusshuibenyuedu/list'
     import config from '@/views/modules/config/list'
     import examrecord from '@/views/modules/examrecord/list'
@@ -43,12 +41,7 @@ const routes = [{
       name: '修改密码',
       component: UpdatePassword,
       meta: {icon:'', title:'updatePassword'}
-    }, {
-      path: '/pay',
-      name: '支付',
-      component: pay,
-      meta: {icon:'', title:'pay'}
-    }, {
+    },{
       path: '/center',
       name: '个人信息',
       component: center,
@@ -100,11 +93,6 @@ const routes = [{
         component: exampaperlist
       }
       ,{
-	path: '/huibenleixing',
-        name: '绘本类型',
-        component: huibenleixing
-      }
-      ,{
 	path: '/discusshuibenyuedu',
         name: '绘本阅读评论',
         component: discusshuibenyuedu
@@ -116,7 +104,7 @@ const routes = [{
       }
       ,{
 	path: '/examrecord',
-        name: '考试记录',
+        name: '小测验记录',
         component: examrecord
       }
     ]

@@ -67,7 +67,7 @@
             align="center"
             sortable
             width="170"
-            label="考试时间"
+            label="小测验时间"
           ></el-table-column>
         </el-table>
         <el-pagination

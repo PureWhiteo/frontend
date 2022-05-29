@@ -68,19 +68,6 @@
           </el-form-item>
         </div>
       </el-col>
-      <el-col :span="12">
-        <el-form-item class="input" v-if="type!='info'"  label="级别" prop="jibie">
-          <el-input v-model="ruleForm.jibie" 
-              placeholder="级别" clearable  :readonly="ro.jibie"></el-input>
-        </el-form-item>
-        <div v-else>
-          <el-form-item class="input" label="级别" prop="jibie">
-              <el-input v-model="ruleForm.jibie" 
-                placeholder="级别" readonly></el-input>
-          </el-form-item>
-        </div>
-      </el-col>
-      <el-col :span="24">  
         <el-form-item class="upload upload-book-listen" v-if="type!='info'&& !ro.huibentingdu" label="绘本听读" prop="huibentingdu">
           <file-upload
             tip="点击上传绘本听读"
@@ -271,7 +258,7 @@ export default {
         huibenyiwen: '',
         fabushijian: '',
       },
-          huibenleixingOptions: [],
+          huibenleixingOptions: ["一年级","二年级","三年级","四年级","五年级","六年级"],
       rules: {
           huibenmingcheng: [
           ],
@@ -399,17 +386,6 @@ export default {
           this.$message.error(data.msg);
         }
       });
-            this.$http({
-              url: `option/huibenleixing/huibenleixing`,
-              method: "get"
-            }).then(({ data }) => {
-              if (data && data.code === 0) {
-                this.huibenleixingOptions = data.data;
-              } else {
-                this.$message.error(data.msg);
-              }
-            });
-         
     },
     // 多级联动参数
     info(id) {
@@ -433,31 +409,15 @@ export default {
     // 提交
     onSubmit() {
 
-
-
-
 	if(this.ruleForm.fengmian!=null) {
 		this.ruleForm.fengmian = this.ruleForm.fengmian.replace(new RegExp(this.$base.url,"g"),"");
 	}
 
 
 
-
-
-
-
-
 	if(this.ruleForm.huibentingdu!=null) {
 		this.ruleForm.huibentingdu = this.ruleForm.huibentingdu.replace(new RegExp(this.$base.url,"g"),"");
 	}
-
-
-
-
-
-
-
-
 
 
 

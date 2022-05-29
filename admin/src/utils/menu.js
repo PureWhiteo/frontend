@@ -10,16 +10,7 @@ const menu = {
                     "tableName": "yonghu"
                 }],
                 "menu": "用户管理"
-            }, {
-                "child": [{
-                    "appFrontIcon": "cuIcon-discover",
-                    "buttons": ["新增", "查看", "修改", "删除"],
-                    "menu": "绘本类型",
-                    "menuJump": "列表",
-                    "tableName": "huibenleixing"
-                }],
-                "menu": "绘本类型管理"
-            }, {
+            },{
                 "child": [{
                     "appFrontIcon": "cuIcon-vip",
                     "buttons": ["新增", "查看", "修改", "删除", "查看评论"],
@@ -71,7 +62,7 @@ const menu = {
                     {
                         "appFrontIcon": "cuIcon-keyboard",
                         "buttons": ["新增", "查看", "修改", "删除"],
-                        "menu": "考试记录",
+                        "menu": "小测验记录",
                         "tableName": "examrecord"
                     }, {
                         "appFrontIcon": "cuIcon-skin",
@@ -86,7 +77,7 @@ const menu = {
                     //     "tableName": "exampaperlist"
                     // }
                 ],
-                "menu": "考试管理"
+                "menu": "小测验管理"
             }],
             "frontMenu": [{
                 "child": [{
@@ -126,7 +117,7 @@ const menu = {
                 "child": [{
                     "appFrontIcon": "cuIcon-keyboard",
                     "buttons": ["查看", "删除"],
-                    "menu": "考试记录",
+                    "menu": "小测验记录",
                     "tableName": "examrecord"
                 }, {
                     "appFrontIcon": "cuIcon-skin",
@@ -134,7 +125,7 @@ const menu = {
                     "menu": "错题本",
                     "tableName": "examfailrecord"
                 }],
-                "menu": "考试管理"
+                "menu": "小测验管理"
             }],
             "frontMenu": [{
                 "child": [{
