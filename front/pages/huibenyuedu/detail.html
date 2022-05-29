@@ -32,7 +32,8 @@
 	#swiper {
 		overflow: hidden;
 	}
-	#swiper .layui-carousel-ind li {
+	#swiper .layui-carousel-ind li,
+	#swiperReadImg .layui-carousel-ind li {
 		width: 10px;
 		height: 10px;
 		border-width: 0;
@@ -42,7 +43,14 @@
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0 0 6px rgba(255, 255, 255, 1);
 	}
-	#swiper .layui-carousel-ind li.layui-this {
+	#swiperReadImg .layui-carousel-ind li {
+		width: 10px;
+		height: 10px;
+		background-color: rgba(255, 255, 255, .5);
+		box-shadow: none;
+	}
+	#swiper .layui-carousel-ind li.layui-this,
+	#swiperReadImg .layui-carousel-ind li.layui-this {
 		width: 24px;
 		height: 10px;
 		border-width: 0;
@@ -51,6 +59,20 @@
 		border-radius: 50%;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0 0 6px rgba(255, 255, 255, 1);
+	}
+
+	#swiperReadImg .layui-carousel-ind li.layui-this {
+		width: 11px;
+		height: 11px;
+		background-color: rgba(255, 255, 255, 1);
+		box-shadow: none;
+	}
+
+	#swiperReadImg .layui-carousel-arrow {
+		height: 72px;
+		width: 72px;
+		line-height: 72px;
+		font-size: 39px;
 	}
 
 	input#buynumber::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; }
@@ -75,8 +97,9 @@ color: rgba(201, 165, 72, 1) !important;
 <body>
 
 	<div id="app">
+		<div class="page-reading-detail"></div>
 
-		<div class="data-detail" style="padding:0">
+		<div class="data-detail" style="padding:0;background: transparent;padding-top: 42px;">
 			<div class="data-detail-breadcrumb" :style='{"padding":"0 20px","boxShadow":"0 0 0px rgba(39, 39, 39, 1)","margin":"20px auto","borderColor":"rgba(19, 175, 105, 1)","borderRadius":"323px","borderWidth":"0","borderStyle":"solid","height":"54px"}'>
 				<span class="layui-breadcrumb">
 					<a class="first" :style='{"padding":"8px 10px","boxShadow":"0 0 0px rgba(255,0,0,0)","margin":"0 5px","borderColor":"rgba(255,0,0,.3)","color":"rgba(201, 165, 72, 1)","borderRadius":"0","borderWidth":"0","fontSize":"16px","borderStyle":"solid"}' href="../home/home.html">首页</a>
@@ -196,7 +219,14 @@ color: rgba(201, 165, 72, 1) !important;
 					<div class="layui-tab-content">
 						
 						<div class="layui-tab-item layui-show">
-							<div v-html="detail.huibenyuedu"></div>
+							<!-- <div v-html="detail.huibenyuedu"></div> -->
+							<div class="layui-carousel" id="swiperReadImg" :style='{"boxShadow":"0 0 0px #FF9012","margin":"0 auto","borderColor":"rgba(0,0,0,.3)","borderRadius":"4px","borderWidth":"0","width":"400px","borderStyle":"solid","height":"400px"}'>
+								<div carousel-item>
+								  <div v-if="detailImgs.length" v-for="(item,index) in detailImgs" :key="index">
+									  <img style="width: 100%;height: 100%;" :src="item" />
+								  </div>
+								</div>
+							  </div>
 						</div>
 						<div class="layui-tab-item">
 							<div v-html="detail.huibenyiwen"></div>
@@ -266,8 +296,10 @@ color: rgba(201, 165, 72, 1) !important;
 				swiperList: [],
 				// 数据详情
 				detail: {
-					id: 0
+					id: 0,
+					huibenyuedu: ''
 				},
+				detailImgs: [],
 				// 商品标题
 				title: '',
 				// 倒计时
@@ -342,9 +374,17 @@ color: rgba(201, 165, 72, 1) !important;
 					return time;
 				}
 			},
+			mounted() {
+				window.parent.window._curPage = 'huibenyuedu_detail'
+				// window.parent?.docuemnt?.querySelector('#common .banner').style.display = 'none';
+			},
+			beforeDestroy() {
+				window.parent.window._curPage = ''
+			},
 			//  清除定时器
 			destroyed: function() {
 				window.clearInterval(this.inter);
+				window.parent.window._curPage = ''
 			},
 			methods: {
 				jump(url) {
@@ -500,8 +540,9 @@ color: rgba(201, 165, 72, 1) !important;
 					}
 
 					jump(`../${acrossTable}/add.html?corss=true`);
+					// openLayerPage(`../${acrossTable}/add.html?corss=true`)
 				},
-	    // 收藏商品
+	    		// 收藏商品
 				storeUp() {
 					layui.http.request('storeup/list', 'get', {
 						page: 1,
@@ -541,9 +582,19 @@ color: rgba(201, 165, 72, 1) !important;
 					});
 				},
 
-
 			}
 		})
+
+
+		function openLayerPage(url) {
+			layui.use(['layer', 'form', 'element', 'carousel', 'http', 'jquery', 'laypage'], function() {
+				var layer = layui.layer;
+				layer.open({
+					type: 2, 
+					content: url
+				});
+			}); 
+		}
 
 		layui.use(['layer', 'form', 'element', 'carousel', 'http', 'jquery', 'laypage'], function() {
 			var layer = layui.layer;
@@ -566,6 +617,8 @@ color: rgba(201, 165, 72, 1) !important;
 				// 详情信息
 				vue.detail = res.data
 				vue.title = vue.detail.huibenmingcheng;
+				const getImageUrls = (text = '') => (text.match(/<img.*?(?:>|\/>)/gi) || []).map((item, i) => item.match(/src=[\'\"]?([^\'\"]*)[\'\"]?/i)?.[1]).filter(item => item);
+				vue.detailImgs = getImageUrls(res.data.huibenyuedu);
 				// 轮播图片
 				vue.swiperList = vue.detail.fengmian ? vue.detail.fengmian.split(",") : [];
 				// var swiperItemHtml = '';
@@ -588,7 +641,16 @@ color: rgba(201, 165, 72, 1) !important;
 					interval: '3000',
 					indicator: 'inside'
 				  });
-
+				  carousel.render({
+					elem: '#swiperReadImg',
+					width: '820px',
+					height: '750px',
+					arrow: 'always',
+					anim: 'default',
+					autoplay: false,
+					interval: 0,
+					indicator: 'inside'
+				  });
 				})
 				// carousel.render({
 				// 	elem: '#swiper',

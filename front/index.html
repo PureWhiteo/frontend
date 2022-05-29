@@ -312,6 +312,7 @@
 
 		// 导航栏跳转
 		function navPage(url) {
+			window.parent.window._curPage = '';
 			localStorage.setItem('iframeUrl', url);
 			document.getElementById('iframe').src = url;
 		}
@@ -329,6 +330,17 @@
 
 		var iframeUrl = localStorage.getItem('iframeUrl');
 		document.getElementById('iframe').src = iframeUrl || './pages/home/home.html';
+
+
+		setInterval(() => {
+			try {
+				const is = document?.getElementById('iframe')?.contentWindow?.document?.querySelector('.page-reading-detail');
+				if (is) document.querySelector('#common .banner').style.display = 'none'
+				else document.querySelector('#common .banner').style.display = '';
+			} catch(e) {
+				document.querySelector('#common .banner').style.display = '';
+			}
+		}, 200)
 
 		let list = document.getElementsByTagName("li");
 		for (var i = 0; i < list.length; i++) {
