@@ -34,7 +34,13 @@ const menu = {
                     "buttons": ["新增", "查看", "修改", "删除"],
                     "menu": "小测验管理",
                     "tableName": "exampaper"
-                }],
+                },{
+                    "appFrontIcon": "cuIcon-keyboard",
+                    "buttons": ["新增", "查看", "修改", "删除"],
+                    "menu": "小测验记录",
+                    "tableName": "examrecord"
+                }, 
+            ],
                 "menu": "小测验管理"
             }, {
                 "child": [{
@@ -57,28 +63,31 @@ const menu = {
                     "tableName": "news"
                 }],
                 "menu": "系统管理"
-            }, {
-                "child": [
-                    {
-                        "appFrontIcon": "cuIcon-keyboard",
-                        "buttons": ["新增", "查看", "修改", "删除"],
-                        "menu": "小测验记录",
-                        "tableName": "examrecord"
-                    }, {
-                        "appFrontIcon": "cuIcon-skin",
-                        "buttons": ["新增", "查看", "修改", "删除"],
-                        "menu": "错题本",
-                        "tableName": "examfailrecord"
-                    },
-                    // {
-                    //     "appFrontIcon": "cuIcon-baby",
-                    //     "buttons": ["新增", "查看", "修改", "删除"],
-                    //     "menu": "小测验列表",
-                    //     "tableName": "exampaperlist"
-                    // }
-                ],
-                "menu": "小测验管理"
-            }],
+            }
+            // , {
+            //     "child": [
+            //         {
+            //             "appFrontIcon": "cuIcon-keyboard",
+            //             "buttons": ["新增", "查看", "修改", "删除"],
+            //             "menu": "小测验记录",
+            //             "tableName": "examrecord"
+            //         }, 
+            //         // {
+            //         //     "appFrontIcon": "cuIcon-skin",
+            //         //     "buttons": ["新增", "查看", "修改", "删除"],
+            //         //     "menu": "错题本",
+            //         //     "tableName": "examfailrecord"
+            //         // },
+            //         // {
+            //         //     "appFrontIcon": "cuIcon-baby",
+            //         //     "buttons": ["新增", "查看", "修改", "删除"],
+            //         //     "menu": "小测验列表",
+            //         //     "tableName": "exampaperlist"
+            //         // }
+            //     ],
+            //     "menu": "小测验记录"
+            // }
+        ],
             "frontMenu": [{
                 "child": [{
                     "appFrontIcon": "cuIcon-clothes",
