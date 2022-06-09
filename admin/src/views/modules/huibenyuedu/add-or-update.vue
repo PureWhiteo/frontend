@@ -68,6 +68,19 @@
           </el-form-item>
         </div>
       </el-col>
+      <!-- <el-col :span="12">
+        <el-form-item class="input" v-if="type!='info'"  label="级别" prop="jibie">
+          <el-input v-model="ruleForm.jibie" 
+              placeholder="级别" clearable  :readonly="ro.jibie"></el-input>
+        </el-form-item>
+        <div v-else>
+          <el-form-item class="input" label="级别" prop="jibie">
+              <el-input v-model="ruleForm.jibie" 
+                placeholder="级别" readonly></el-input>
+          </el-form-item>
+        </div>
+      </el-col> -->
+      <el-col :span="24">  
         <el-form-item class="upload upload-book-listen" v-if="type!='info'&& !ro.huibentingdu" label="绘本听读" prop="huibentingdu">
           <file-upload
             tip="点击上传绘本听读"
@@ -162,8 +175,6 @@
   </div>
 </template>
 <script>
-// 数字，邮件，手机，url，身份证校验
-import { isNumber,isIntNumer,isEmail,isPhone, isMobile,isURL,checkIdCard } from "@/utils/validate";
 export default {
   data() {
     var validateIntNumber = (rule, value, callback) => {
