@@ -57,74 +57,8 @@
   </div>
 </template>
 <script>
-// 数字，邮件，手机，url，身份证校验
-import { isNumber,isIntNumer,isEmail,isPhone, isMobile,isURL,checkIdCard } from "@/utils/validate";
 export default {
   data() {
-    let self = this
-    var validateIdCard = (rule, value, callback) => {
-      if(!value){
-        callback();
-      } else if (!checkIdCard(value)) {
-        callback(new Error("请输入正确的身份证号码"));
-      } else {
-        callback();
-      }
-    };
-    var validateUrl = (rule, value, callback) => {
-      if(!value){
-        callback();
-      } else if (!isURL(value)) {
-        callback(new Error("请输入正确的URL地址"));
-      } else {
-        callback();
-      }
-    };
-    var validateMobile = (rule, value, callback) => {
-      if(!value){
-        callback();
-      } else if (!isMobile(value)) {
-        callback(new Error("请输入正确的手机号码"));
-      } else {
-        callback();
-      }
-    };
-    var validatePhone = (rule, value, callback) => {
-      if(!value){
-        callback();
-      } else if (!isPhone(value)) {
-        callback(new Error("请输入正确的电话号码"));
-      } else {
-        callback();
-      }
-    };
-    var validateEmail = (rule, value, callback) => {
-      if(!value){
-        callback();
-      } else if (!isEmail(value)) {
-        callback(new Error("请输入正确的邮箱地址"));
-      } else {
-        callback();
-      }
-    };
-    var validateNumber = (rule, value, callback) => {
-      if(!value){
-        callback();
-      } else if (!isNumber(value)) {
-        callback(new Error("请输入数字"));
-      } else {
-        callback();
-      }
-    };
-    var validateIntNumber = (rule, value, callback) => {
-      if(!value){
-        callback();
-      } else if (!isIntNumer(value)) {
-        callback(new Error("请输入整数"));
-      } else {
-        callback();
-      }
-    };
     return {
 	  addEditForm: {"btnSaveFontColor":"rgba(0, 0, 0, 1)","selectFontSize":"14px","btnCancelBorderColor":"rgba(220, 223, 230, 1)","inputBorderRadius":"4px","inputFontSize":"14px","textareaBgColor":"rgba(255, 255, 255, 0.9)","btnSaveFontSize":"14px","textareaBorderRadius":"4px","uploadBgColor":"rgba(255, 255, 255, 0.9)","textareaBorderStyle":"solid","btnCancelWidth":"88px","textareaHeight":"120px","dateBgColor":"rgba(255, 255, 255, 0.9)","btnSaveBorderRadius":"4px","uploadLableFontSize":"14px","textareaBorderWidth":"2px","inputLableColor":"rgba(0, 0, 0, 1)","addEditBoxColor":"rgba(255, 255, 255, 0)","dateIconFontSize":"14px","btnSaveBgColor":"rgba(236, 245, 255, 1)","uploadIconFontColor":"rgba(0, 0, 0, 1)","textareaBorderColor":"rgba(0, 0, 0, 1)","btnCancelBgColor":"rgba(236, 245, 255, 1)","selectLableColor":"rgba(0, 0, 0, 1)","btnSaveBorderStyle":"solid","dateBorderWidth":"2px","dateLableFontSize":"14px","dateBorderRadius":"4px","btnCancelBorderStyle":"solid","selectLableFontSize":"14px","selectBorderStyle":"solid","selectIconFontColor":"rgba(0, 0, 0, 1)","btnCancelHeight":"44px","inputHeight":"40px","btnCancelFontColor":"rgba(0, 0, 0, 1)","dateBorderColor":"rgba(0, 0, 0, 1)","dateIconFontColor":"rgba(0, 0, 0, 1)","uploadBorderStyle":"solid","dateBorderStyle":"solid","dateLableColor":"rgba(0, 0, 0, 1)","dateFontSize":"14px","inputBorderWidth":"2px","uploadIconFontSize":"28px","selectHeight":"40px","inputFontColor":"rgba(0, 0, 0, 1)","uploadHeight":"148px","textareaLableColor":"rgba(0, 0, 0, 1)","textareaLableFontSize":"14px","btnCancelFontSize":"14px","inputBorderStyle":"solid","btnCancelBorderRadius":"4px","inputBgColor":"rgba(255, 255, 255, 0.9)","inputLableFontSize":"14px","uploadLableColor":"rgba(0, 0, 0, 1)","uploadBorderRadius":"4px","btnSaveHeight":"44px","selectBgColor":"rgba(255, 255, 255, 0.9)","btnSaveWidth":"88px","selectIconFontSize":"14px","dateHeight":"40px","selectBorderColor":"rgba(0, 0, 0, 1)","inputBorderColor":"rgba(0, 0, 0, 1)","uploadBorderColor":"rgba(0, 0, 0, 1)","textareaFontColor":"rgba(0, 0, 0, 1)","selectBorderWidth":"2px","dateFontColor":"rgba(0, 0, 0, 1)","btnCancelBorderWidth":"1px","uploadBorderWidth":"2px","textareaFontSize":"14px","selectBorderRadius":"4px","selectFontColor":"rgba(0, 0, 0, 1)","btnSaveBorderColor":"rgba(220, 223, 230, 1)","btnSaveBorderWidth":"1px"},
       id: '',
