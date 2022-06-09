@@ -180,7 +180,7 @@ export default {
         this.ruleForm = data.data;
 	//解决前台上传图片后台不显示的问题
 	let reg=new RegExp('../../../upload','g')//g代表全部
-	this.ruleForm.content = this.ruleForm.content.replace(reg,'../../../springboot1144o/upload');
+	this.ruleForm.content = this.ruleForm.content.replace(reg,'../../../huiben/upload');
         } else {
           this.$message.error(data.msg);
         }

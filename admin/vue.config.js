@@ -32,13 +32,12 @@ lintOnSave: false,
         hot: true, // 开启热更新
         https: false, // 是否开启https模式
         proxy: { // 请求代理服务器
-            '/springboot1144o': { //带上api前缀的
-                // target: 'http://110.42.186.88:8080/springboot1144o/', //代理目标地址
-                target: 'http://localhost:8080/springboot1144o/',
+            '/huiben': { //带上api前缀的
+                target: 'http://localhost:8080/huiben/', //代理目标地址
                 changeOrigin: true,
                 secure: false,
                 pathRewrite: { // 在发出请求后将/api替换为''空值，这样不影响接口请求
-                    '^/springboot1144o': ''
+                    '^/huiben': ''
                 }
             }
         }
